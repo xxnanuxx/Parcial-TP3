@@ -7,31 +7,31 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.dogaplication.Fragments.HomeFragment"
+        android:name="com.example.dogaplication.fragments.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/favoritoFragment"
-        android:name="com.example.dogaplication.Fragments.FavoritoFragment"
+        android:name="com.example.dogaplication.fragments.FavoritoFragment"
         android:label="fragment_favorito"
         tools:layout="@layout/fragment_favorito" />
     <fragment
         android:id="@+id/adopcionFragment"
-        android:name="com.example.dogaplication.Fragments.AdopcionFragment"
+        android:name="com.example.dogaplication.fragments.AdopcionFragment"
         android:label="fragment_adopcion"
         tools:layout="@layout/fragment_adopcion" />
     <fragment
         android:id="@+id/publicacionFragment"
-        android:name="com.example.dogaplication.Fragments.PublicacionFragment"
+        android:name="com.example.dogaplication.fragments.PublicacionFragment"
         android:label="fragment_publicacion"
         tools:layout="@layout/fragment_publicacion" />
     <fragment
         android:id="@+id/perfilFragment"
-        android:name="com.example.dogaplication.Fragments.PerfilFragment"
+        android:name="com.example.dogaplication.fragments.PerfilFragment"
         android:label="fragment_perfil"
         tools:layout="@layout/fragment_perfil" />
     <activity
         android:id="@+id/settingsActivity"
-        android:name="com.example.dogaplication.Activities.SettingsActivity"
+        android:name="com.example.dogaplication.activities.SettingsActivity"
         android:label="SettingsActivity" />
 </navigation>

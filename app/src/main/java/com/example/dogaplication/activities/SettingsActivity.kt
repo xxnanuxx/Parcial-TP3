@@ -1,4 +1,4 @@
-package com.example.dogaplication.Activities
+package com.example.dogaplication.activities
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

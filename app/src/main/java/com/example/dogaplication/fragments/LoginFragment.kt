@@ -1,4 +1,4 @@
-package com.example.dogaplication.Fragments
+package com.example.dogaplication.fragments
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,8 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import androidx.navigation.findNavController
-import com.example.dogaplication.Activities.MainActivity
+import com.example.dogaplication.activities.MainActivity
 import com.example.dogaplication.R
 import com.google.android.material.textfield.TextInputEditText
 

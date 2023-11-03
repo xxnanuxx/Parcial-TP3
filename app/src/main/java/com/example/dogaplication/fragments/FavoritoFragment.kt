@@ -1,4 +1,4 @@
-package com.example.dogaplication.Fragments
+package com.example.dogaplication.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
