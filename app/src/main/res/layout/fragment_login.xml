@@ -34,7 +34,7 @@
             android:layout_height="10dp"></View>
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/userTextId"
+            android:id="@+id/fragLogTxtInUserId"
             style="@style/Widget.Material3.AutoCompleteTextView.OutlinedBox.Dense"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -63,7 +63,7 @@
             android:layout_height="10dp"></View>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/buttonLoginId"
+            android:id="@+id/fragLogBtnLoginId"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="#57C6F8"

@@ -41,6 +41,7 @@ android {
 }
 
 dependencies {
+    implementation("androidx.preference:preference:1.2.0")
     val nav_version = "2.7.5"
 
     implementation("androidx.core:core-ktx:1.9.0")

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/homeFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:title="Home" />
+    <item
+        android:id="@+id/favoritoFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:title="Favoritos" />
+    <item
+        android:id="@+id/adopcionFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:title="Adopcion" />
+    <item
+        android:id="@+id/publicacionFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:title="Publicacion" />
+</menu>
