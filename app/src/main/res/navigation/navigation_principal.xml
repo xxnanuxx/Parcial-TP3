@@ -25,4 +25,13 @@
         android:name="com.example.dogaplication.Fragments.PublicacionFragment"
         android:label="fragment_publicacion"
         tools:layout="@layout/fragment_publicacion" />
+    <fragment
+        android:id="@+id/perfilFragment"
+        android:name="com.example.dogaplication.Fragments.PerfilFragment"
+        android:label="fragment_perfil"
+        tools:layout="@layout/fragment_perfil" />
+    <activity
+        android:id="@+id/settingsActivity"
+        android:name="com.example.dogaplication.Activities.SettingsActivity"
+        android:label="SettingsActivity" />
 </navigation>
