@@ -15,6 +15,7 @@
 
     <string name="navigation_drawer_open">"Abrir"</string>
     <string name="navigation_drawer_close">"Cerrar"</string>
+    <string name="introduction_welcome">"Make your life more happy with us to have a little new friends"</string>
 
     <!-- Sync Preferences -->
     <string name="sync_title">Sync email periodically</string>
