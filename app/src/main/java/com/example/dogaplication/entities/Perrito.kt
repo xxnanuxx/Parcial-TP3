@@ -2,15 +2,30 @@ package com.example.dogaplication.entities
 
 import android.os.Parcel
 import android.os.Parcelable
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 
-class Perrito(nombre:String?, raza: String?, subRaza: String?, edad: Int?, macho: Byte, favorito:Byte, imagen: String?): Parcelable {
+@Entity (tableName = "perritos")
+class Perrito(nombre:String?, raza: String?, subRaza: String?, edad: Int?, peso: Int? ,macho: Byte, favorito:Byte, imagen: String?): Parcelable {
 
+    @PrimaryKey(autoGenerate = true)
+    var id: Int = 0
+    @ColumnInfo(name = "nombre")
     var nombre: String = ""
+    @ColumnInfo(name = "raza")
     var raza: String = ""
+    @ColumnInfo(name = "subRaza")
     var subRaza: String = ""
+    @ColumnInfo(name = "edad")
     var edad: Int = 0
-    var macho: Byte = 0
+    @ColumnInfo(name = "peso")
+    var peso: Int = 0
+    @ColumnInfo(name = "macho")
+    var macho: Byte= 0
+    @ColumnInfo(name = "favorito")
     var favorito: Byte = 0
+    @ColumnInfo(name = "imagen")
     var imagen: String = ""
 
 
@@ -18,6 +33,7 @@ class Perrito(nombre:String?, raza: String?, subRaza: String?, edad: Int?, macho
         parcel.readString(),
         parcel.readString(),
         parcel.readString(),
+        parcel.readInt(),
         parcel.readInt(),
         parcel.readByte(),
         parcel.readByte(),
@@ -29,19 +45,19 @@ class Perrito(nombre:String?, raza: String?, subRaza: String?, edad: Int?, macho
         this.edad = edad!!
         this.imagen = imagen!!
         this.raza = raza!!
+        this.peso = peso!!
         this.subRaza = subRaza!!
         this.macho = macho!!
         this.favorito = favorito!!
 
     }
 
-
-
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(nombre)
         parcel.writeString(raza)
         parcel.writeString(subRaza)
         parcel.writeInt(edad)
+        parcel.writeInt(peso)
         parcel.writeByte(macho)
         parcel.writeByte(favorito)
         parcel.writeString(imagen)

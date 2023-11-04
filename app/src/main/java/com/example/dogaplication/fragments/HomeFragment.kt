@@ -42,10 +42,10 @@ class HomeFragment : Fragment(), OnViewItemClickedListener {
         super.onStart()
 
         for (i in 1..2) {
-            listaPerritos.add(Perrito("Pedro","","", 5, 0, 0, ""))
-            listaPerritos.add(Perrito("Olivia","","", 2, 0, 0, ""))
-            listaPerritos.add(Perrito("Martín","","", 9, 0, 0, ""))
-            listaPerritos.add(Perrito("Matt","","", 9, 0, 0, ""))
+            listaPerritos.add(Perrito("Pedro","","", 5, 10, 0, 0, ""))
+            listaPerritos.add(Perrito("Olivia","","", 2, 10,0, 0, ""))
+            listaPerritos.add(Perrito("Martín","","", 9, 10,0, 0, ""))
+            listaPerritos.add(Perrito("Matt","","", 9, 10,0,0, ""))
 
 
         }
