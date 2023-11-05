@@ -68,6 +68,6 @@ dependencies {
     //rooms
     implementation ("androidx.room:room-runtime:2.4.0")
     annotationProcessor ("androidx.room:room-compiler:2.4.0")
-    kapt("androidx.room:room-compiler:2.4.0")
+    kapt("androidx.room:room-compiler:2.5.0")
 
 }

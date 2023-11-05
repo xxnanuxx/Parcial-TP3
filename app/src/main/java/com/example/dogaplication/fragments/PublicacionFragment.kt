@@ -138,7 +138,17 @@ class PublicacionFragment : Fragment() {
         perritoDao = db?.PerritoDao()
 
         btnPublicar.setOnClickListener {
-            perritoDao?.insertPerrito(Perrito(nombre.text.toString(), raza.text.toString(), "" ,Integer.parseInt(edad.text.toString()),Integer.parseInt(peso.text.toString()) ,macho.toString().toByte() ,0.toByte(),imagen.text.toString() ))
+            //Se pasa el toggle button de boolean a byte. Si es hembra es 0 y si es macho es 1
+            val machoByte: Byte = if (macho.isChecked) 1.toByte() else 0.toByte()
+            perritoDao?.insertPerrito(
+                Perrito(nombre.text.toString(),
+                raza.text.toString(),
+                "" ,
+                Integer.parseInt(edad.text.toString()),
+                Integer.parseInt(peso.text.toString()) ,
+                machoByte,
+                0.toByte(),
+                imagen.text.toString() ))
 
         Log.i("Perrito",nombre.text.toString())
         //i += 1
