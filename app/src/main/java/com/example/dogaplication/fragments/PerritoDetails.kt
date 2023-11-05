@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import com.example.dogaplication.R
+import com.example.dogaplication.entities.Perrito
 
 class PerritoDetails : Fragment() {
     lateinit var v: View
@@ -33,6 +34,9 @@ class PerritoDetails : Fragment() {
 
     override fun onStart() {
         super.onStart()
+
+        val perrito: Perrito? = arguments?.getParcelable("perrito")
+        info.text = perrito?.nombre
         //  arguments?.let {
         //  val perrito = PerritoDetailsArgs.fromBundle(it).perrito
         //   info.text = perrito.nombre

@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dogaplication.R
@@ -63,8 +64,8 @@ class HomeFragment : Fragment(), OnViewItemClickedListener {
     }
 
     override fun onViewItemDetail(perrito: Perrito) {
-    //    val action = listFragmentDirections.actionListFragmentToViewItem(contacto)
-      //  this.findNavController().navigate(action)
+        val action = HomeFragmentDirections.actionHomeFragment3ToPerritoDetails(perrito)
+        this.findNavController().navigate(action)
         //findNavController().navigate(action)
         //Snackbar.make(v,contacto.nombre,Snackbar.LENGTH_SHORT).show()
 
