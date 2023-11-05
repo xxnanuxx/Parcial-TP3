@@ -7,6 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
+import androidx.navigation.findNavController
 import com.example.dogaplication.activities.MainActivity
 import com.example.dogaplication.R
 import com.google.android.material.textfield.TextInputEditText
@@ -14,6 +16,7 @@ import com.google.android.material.textfield.TextInputEditText
 class LoginFragment : Fragment() {
 
     lateinit var btnLogin : Button
+    lateinit var btnRegistrar : TextView
     lateinit var textInput : TextInputEditText
 
     override fun onCreateView(
@@ -25,6 +28,7 @@ class LoginFragment : Fragment() {
 
         btnLogin = view.findViewById<Button>(R.id.fragLogBtnLoginId)
         textInput = view.findViewById<TextInputEditText>(R.id.fragLogTxtInUserId)
+        btnRegistrar = view.findViewById<TextInputEditText>(R.id.fragLogtxtRegistrarId)
 
         //binding.fragWelcBtnNextId.setOnClickListener{} VERIFICAR POR QUE NO ANDA
 
@@ -33,6 +37,12 @@ class LoginFragment : Fragment() {
             intent.putExtra("usuario", textInput.text.toString())
             startActivity(intent)
         }
+
+        btnRegistrar.setOnClickListener{
+            val accion = LoginFragmentDirections.actionLoginFragmentToRegistrarFragment()
+            view.findNavController().navigate(accion)
+        }
+
         return view
 
     }
