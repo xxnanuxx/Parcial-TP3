@@ -42,6 +42,8 @@ class PublicacionFragment : Fragment() {
     private var perritoDao: PerritoDao? = null
     private lateinit var v : View
 
+    var i : Int? = 0
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -132,16 +134,15 @@ class PublicacionFragment : Fragment() {
         // mas componentes:
 
 
-
         db = appDatabase.getAppDataBase(v.context)
-
         perritoDao = db?.PerritoDao()
+        i = perritoDao?.countPerrito()
 
         btnPublicar.setOnClickListener {
             //Se pasa el toggle button de boolean a byte. Si es hembra es 0 y si es macho es 1
             val machoByte: Byte = if (macho.isChecked) 1.toByte() else 0.toByte()
             perritoDao?.insertPerrito(
-                Perrito(nombre.text.toString(),
+                Perrito(i, nombre.text.toString(),
                 raza.text.toString(),
                 "" ,
                 Integer.parseInt(edad.text.toString()),
@@ -150,10 +151,12 @@ class PublicacionFragment : Fragment() {
                 0.toByte(),
                 imagen.text.toString() ))
 
-        Log.i("Perrito",nombre.text.toString())
-        //i += 1
-        }
+            db?.openHelper?.writableDatabase?.close()
 
+
+        //Log.i("Perrito",nombre.text.toString())
+
+        }
 
     }
 }

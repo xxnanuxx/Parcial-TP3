@@ -20,4 +20,7 @@ interface PerritoDao {
     @Query("SELECT * FROM perritos WHERE id = :id")
     fun loadPerritoById(id: Int): Perrito?
 
+    @Query("SELECT COUNT(*) FROM perritos")
+    fun countPerrito(): Int
+
 }

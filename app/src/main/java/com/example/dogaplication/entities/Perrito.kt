@@ -7,9 +7,9 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity (tableName = "perritos")
-class Perrito(nombre:String?, raza: String?, subRaza: String?, edad: Int?, peso: Int? ,macho: Byte, favorito:Byte, imagen: String?): Parcelable {
+class Perrito(id: Int?, nombre:String?, raza: String?, subRaza: String?, edad: Int?, peso: Int? ,macho: Byte, favorito:Byte, imagen: String?): Parcelable {
 
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey
     var id: Int = 0
     @ColumnInfo(name = "nombre")
     var nombre: String = ""
@@ -30,6 +30,7 @@ class Perrito(nombre:String?, raza: String?, subRaza: String?, edad: Int?, peso:
 
 
     constructor(parcel: Parcel) : this(
+        parcel.readInt(),
         parcel.readString(),
         parcel.readString(),
         parcel.readString(),
@@ -41,6 +42,7 @@ class Perrito(nombre:String?, raza: String?, subRaza: String?, edad: Int?, peso:
 
     )
     init {
+        this.id = id!!
         this.nombre = nombre!!
         this.edad = edad!!
         this.imagen = imagen!!
@@ -53,6 +55,7 @@ class Perrito(nombre:String?, raza: String?, subRaza: String?, edad: Int?, peso:
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeInt(id)
         parcel.writeString(nombre)
         parcel.writeString(raza)
         parcel.writeString(subRaza)
