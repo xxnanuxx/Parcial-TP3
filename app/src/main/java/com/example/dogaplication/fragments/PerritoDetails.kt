@@ -35,12 +35,12 @@ class PerritoDetails : Fragment() {
     override fun onStart() {
         super.onStart()
 
-        val perrito: Perrito? = arguments?.getParcelable("perrito")
-        info.text = perrito?.nombre
-        //  arguments?.let {
-        //  val perrito = PerritoDetailsArgs.fromBundle(it).perrito
-        //   info.text = perrito.nombre
-        //}
+        //val perrito: Perrito? = arguments?.getParcelable("perrito")
+
+        arguments?.let {
+          val perrito = PerritoDetailsArgs.fromBundle(it).objectPerrito
+          info.text = perrito?.nombre
+        }
 
     }
 

@@ -9,7 +9,11 @@
         android:id="@+id/homeFragment"
         android:name="com.example.dogaplication.fragments.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_perritoDetails"
+            app:destination="@id/perritoDetails" />
+    </fragment>
     <fragment
         android:id="@+id/favoritoFragment"
         android:name="com.example.dogaplication.fragments.FavoritoFragment"
@@ -34,4 +38,13 @@
         android:id="@+id/settingsActivity"
         android:name="com.example.dogaplication.activities.SettingsActivity"
         android:label="SettingsActivity" />
+    <fragment
+        android:id="@+id/perritoDetails"
+        android:name="com.example.dogaplication.fragments.PerritoDetails"
+        android:label="fragment_perrito_details"
+        tools:layout="@layout/fragment_perrito_details" >
+        <argument
+            android:name="objectPerrito"
+            app:argType="com.example.dogaplication.entities.Perrito" />
+    </fragment>
 </navigation>

@@ -52,9 +52,13 @@ class RegistrarFragment : Fragment() {
         userDao = db?.UserDao()
 
         btnReg.setOnClickListener{
-            Log.i("user",editUser.text.toString())
-            userDao?.insertUser(User(i, editUser.text.toString(), editPwd.text.toString(), editName.text.toString(), (editTel.text.toString()).toLong(), editImgUrl.text.toString()))
+
+            val insertedRowId = userDao?.insertUser(User(i, editUser.text.toString(), editPwd.text.toString(), editName.text.toString(), (editTel.text.toString()).toLong(), editImgUrl.text.toString()))
+
+            Log.i("user","inserter row $insertedRowId")
+
             i += 1
+
             val intent = Intent(activity, MainActivity::class.java)
             startActivity(intent)
         }
