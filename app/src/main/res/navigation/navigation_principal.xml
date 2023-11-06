@@ -18,7 +18,11 @@
         android:id="@+id/favoritoFragment"
         android:name="com.example.dogaplication.fragments.FavoritoFragment"
         android:label="fragment_favorito"
-        tools:layout="@layout/fragment_favorito" />
+        tools:layout="@layout/fragment_favorito" >
+        <action
+            android:id="@+id/action_favoritoFragment_to_perritoDetails"
+            app:destination="@id/perritoDetails" />
+    </fragment>
     <fragment
         android:id="@+id/adopcionFragment"
         android:name="com.example.dogaplication.fragments.AdopcionFragment"

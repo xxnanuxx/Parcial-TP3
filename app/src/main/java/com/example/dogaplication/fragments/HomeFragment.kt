@@ -29,7 +29,6 @@ class HomeFragment : Fragment(), OnViewItemClickedListener {
         fun newInstance() = HomeFragment()
     }
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -48,7 +47,6 @@ class HomeFragment : Fragment(), OnViewItemClickedListener {
         db = AppDatabase.getAppDataBase(v.context)
         perritoDao = db?.PerritoDao()
         listaPerritos = perritoDao?.loadAllPerritos()
-
         requireActivity()
         reclistPerritos.setHasFixedSize(true)
         linearLayoutManager = LinearLayoutManager(context)
@@ -66,7 +64,6 @@ class HomeFragment : Fragment(), OnViewItemClickedListener {
         this.findNavController().navigate(action)
 
         Snackbar.make(v,objectPerrito.nombre,Snackbar.LENGTH_SHORT).show()
-
 
 
     }
