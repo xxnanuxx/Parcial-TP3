@@ -1,5 +1,6 @@
 package com.example.dogaplication.fragments
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
 import androidx.navigation.findNavController
 import com.example.dogaplication.activities.MainActivity
@@ -17,7 +19,8 @@ class LoginFragment : Fragment() {
 
     lateinit var btnLogin : Button
     lateinit var btnRegistrar : TextView
-    lateinit var textInput : TextInputEditText
+    lateinit var txtUser : TextInputEditText
+    lateinit var txtPwd : EditText
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,16 +28,20 @@ class LoginFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_login, container, false)
-
+        val sharedPreferences = requireContext().getSharedPreferences("MiPreferencia", Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
         btnLogin = view.findViewById<Button>(R.id.fragLogBtnLoginId)
-        textInput = view.findViewById<TextInputEditText>(R.id.fragLogTxtInUserId)
+        txtUser = view.findViewById<TextInputEditText>(R.id.fragLogTxtInUserId)
+        txtPwd = view.findViewById<EditText>(R.id.fragLogTxtInPwdId)
         btnRegistrar = view.findViewById<TextInputEditText>(R.id.fragLogtxtRegistrarId)
 
-        //binding.fragWelcBtnNextId.setOnClickListener{} VERIFICAR POR QUE NO ANDA
-
         btnLogin.setOnClickListener{
+
+            editor.putString("usuario", txtUser.text.toString())
+            editor.putString("telefono", txtPwd.text.toString())
+            editor.apply()
             val intent = Intent(activity, MainActivity::class.java)
-            intent.putExtra("usuario", textInput.text.toString())
+            intent.putExtra("usuario", txtUser.text.toString())
             startActivity(intent)
         }
 

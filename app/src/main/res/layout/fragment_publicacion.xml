@@ -92,12 +92,6 @@
                 android:textOn="Macho" />
 
             <EditText
-                android:id="@+id/fragPubEditTxtDuenio"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Nombre del dueño" />
-
-            <EditText
                 android:id="@+id/fragPubEditTxtPeso"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

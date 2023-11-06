@@ -37,11 +37,10 @@ class HomeFragment : Fragment(), OnViewItemClickedListener {
         reclistPerritos = v.findViewById(R.id.recPerritoList)
 
         for (i in 1..2) {
-            listaPerritos.add(Perrito(5000,"Pedro","","", 5, 10, 0, 0, ""))
-            listaPerritos.add(Perrito(5001,"Olivia","","", 2, 10,0, 0, ""))
-            listaPerritos.add(Perrito(5002,"Martín","","", 9, 10,0, 0, ""))
-            listaPerritos.add(Perrito(5003,"Matt","","", 9, 10,0,0, ""))
-
+            listaPerritos.add(Perrito(5000,"Pedro","","", 5, 10, 0, 0, "https://olondriz.com/wp-content/uploads/2020/04/ambar-perrito-1-1024x899.jpg","",""))
+            listaPerritos.add(Perrito(5001,"Olivia","","", 2, 10,0, 0, "","",""))
+            listaPerritos.add(Perrito(5002,"Martín","","", 9, 10,0, 0, "","",""))
+            listaPerritos.add(Perrito(5003,"Matt","","", 9, 10,0,0, "","",""))
 
         }
 

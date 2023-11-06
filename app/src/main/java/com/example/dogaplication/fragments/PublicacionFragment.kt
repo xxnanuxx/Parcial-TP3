@@ -1,5 +1,6 @@
 package com.example.dogaplication.fragments
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -31,7 +32,8 @@ class PublicacionFragment : Fragment() {
     private lateinit  var nombre : EditText
     private lateinit  var edad : EditText
     private lateinit  var peso : EditText
-    private lateinit  var duenio : EditText
+    private lateinit  var duenio : String
+    private lateinit  var telefono : String
     private lateinit  var macho : ToggleButton
     private lateinit var descripcion : EditText
     private lateinit  var ubicacion : EditText
@@ -42,6 +44,7 @@ class PublicacionFragment : Fragment() {
     private var perritoDao: PerritoDao? = null
     private lateinit var v : View
 
+
     var i : Int? = 0
 
     override fun onCreateView(
@@ -50,6 +53,10 @@ class PublicacionFragment : Fragment() {
     ): View? {
         // Inflar la vista primero
         v = inflater.inflate(R.layout.fragment_publicacion, container, false)
+        val sharedPreferences = requireActivity().getSharedPreferences("MiPreferencia", Context.MODE_PRIVATE)
+
+        val usuario = sharedPreferences.getString("usuario", "").toString()
+        val telDuenio = sharedPreferences.getString("telefono", "").toString()
 
         // Configurar AutoCompleteTextView después de inflar la vista
         val autoCompleteTextView = v.findViewById<AutoCompleteTextView>(R.id.fragPubAutoCompleteTextView)
@@ -81,11 +88,13 @@ class PublicacionFragment : Fragment() {
         nombre = v.findViewById(R.id.fragPubEditTxtNombre)
         edad = v.findViewById(R.id.fragPubEditTxtEdad)
         peso = v.findViewById(R.id.fragPubEditTxtPeso)
-        duenio = v.findViewById(R.id.fragPubEditTxtDuenio)
         macho = v.findViewById(R.id.fragPubtoggleButton)
         descripcion = v.findViewById(R.id.fragPubEditTxtDescrip)
         ubicacion = v.findViewById(R.id.fragPubEditTxtUbicacion)
         imagen = v.findViewById(R.id.fragPubEditTxtUrlImages)
+        duenio = usuario
+        telefono = telDuenio
+
         btnPublicar = v.findViewById(R.id.fragPubBtnPublicar)
 
         return v
@@ -113,7 +122,6 @@ class PublicacionFragment : Fragment() {
                                     }
                                 }
                             }
-                            Log.i("Fede","Funca")
                             // Una vez que se ha construido breedsList, configura el adaptador
                             val autoCompleteTextView = view?.findViewById<AutoCompleteTextView>(R.id.fragPubAutoCompleteTextView)
                             val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, breedsList.map { it.name })
@@ -122,7 +130,6 @@ class PublicacionFragment : Fragment() {
                     }
                 } else {
                     // Manejo de errores en caso de que la respuesta no sea exitosa.
-                    Log.e("FedeError","Error Federico")
                 }
             }
 
@@ -138,7 +145,10 @@ class PublicacionFragment : Fragment() {
         perritoDao = db?.PerritoDao()
         i = perritoDao?.countPerrito()
 
+
+
         btnPublicar.setOnClickListener {
+
             //Se pasa el toggle button de boolean a byte. Si es hembra es 0 y si es macho es 1
             val machoByte: Byte = if (macho.isChecked) 1.toByte() else 0.toByte()
             perritoDao?.insertPerrito(
@@ -149,12 +159,12 @@ class PublicacionFragment : Fragment() {
                 Integer.parseInt(peso.text.toString()) ,
                 machoByte,
                 0.toByte(),
-                imagen.text.toString() ))
+                imagen.text.toString(),
+                duenio,
+                telefono),
+                )
 
             db?.openHelper?.writableDatabase?.close()
-
-
-        //Log.i("Perrito",nombre.text.toString())
 
         }
 

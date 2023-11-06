@@ -23,7 +23,7 @@ abstract class appDatabase : RoomDatabase() {
                         context.applicationContext,
                         appDatabase::class.java,
                         "myDB2"
-                    ).addMigrations().allowMainThreadQueries().build() // No es lo mas recomendable que se ejecute en el mainthread
+                    ).allowMainThreadQueries().build() // No es lo mas recomendable que se ejecute en el mainthread
                 }
             }
             return INSTANCE
