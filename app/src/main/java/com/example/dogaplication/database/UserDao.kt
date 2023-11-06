@@ -12,5 +12,12 @@ interface UserDao {
     fun insertUser(user: User?)
 
     @Query("SELECT * FROM users WHERE id = :id")
-    fun loadPerritoById(id: Int): User?
+    fun loadUserById(id: Int): User?
+
+    @Query("SELECT * FROM users WHERE usuario = :usuario")
+    fun loadUserByUsername(usuario: String): User?
+
+    @Query("SELECT COUNT(*) FROM users")
+    fun countUsers(): Int?
+
 }

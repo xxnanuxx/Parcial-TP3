@@ -17,8 +17,8 @@ interface PerritoDao {
     @Query("SELECT * FROM perritos ORDER BY id")
     fun loadAllPerritos(): MutableList<Perrito?>?
 
-    @Query("SELECT * FROM perritos WHERE id = :id")
-    fun loadPerritoById(id: Int): Perrito?
+    @Query("SELECT * FROM perritos WHERE id = :perritoId")
+    fun loadPerritoById(perritoId: Int): Perrito?
 
     @Query("SELECT COUNT(*) FROM perritos")
     fun countPerrito(): Int?

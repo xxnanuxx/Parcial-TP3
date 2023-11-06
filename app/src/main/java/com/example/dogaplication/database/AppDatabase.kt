@@ -6,12 +6,14 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.dogaplication.entities.Perrito
 import com.example.dogaplication.entities.User
-@Database(entities = [Perrito::class, User::class], version = 1)
+import com.example.dogaplication.entities.UserFavPerritoCrossRef
+
+@Database(entities = [Perrito::class, User::class, UserFavPerritoCrossRef::class], version = 1)
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun PerritoDao(): PerritoDao
-
     abstract fun UserDao(): UserDao
+    abstract fun UserPerritoFavDao(): UserPerritoFavDao
 
     companion object {
 

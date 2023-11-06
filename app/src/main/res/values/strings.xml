@@ -18,6 +18,7 @@
     <string name="frag_reg_txtin_usuario">"Usuario"</string>
     <string name="frag_reg_txtin_contrasena">"Contraseña"</string>
     <string name="frag_reg_txtin_nombre">"Nombre"</string>
+    <string name="frag_reg_txtin_ubicacion">"Ubicacion"</string>
     <string name="frag_reg_txtin_telefono">"Telefono"</string>
     <string name="frag_reg_txtin_imgurl">"Foto de perfil  (url)"</string>
     <string name="introduction_welcome">"Make your life more happy with us to have a little new friends"</string>
