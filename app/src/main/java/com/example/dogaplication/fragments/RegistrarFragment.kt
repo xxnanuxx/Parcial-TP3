@@ -12,7 +12,7 @@ import android.widget.EditText
 import com.example.dogaplication.R
 import com.example.dogaplication.activities.MainActivity
 import com.example.dogaplication.database.UserDao
-import com.example.dogaplication.database.appDatabase
+import com.example.dogaplication.database.AppDatabase
 import com.example.dogaplication.entities.User
 
 
@@ -24,7 +24,7 @@ class RegistrarFragment : Fragment() {
     lateinit var editName : EditText
     lateinit var editTel : EditText
     lateinit var editImgUrl : EditText
-    private  var db: appDatabase? = null
+    private  var db: AppDatabase? = null
     private var userDao: UserDao? = null
 
     var i : Int = 0
@@ -48,7 +48,7 @@ class RegistrarFragment : Fragment() {
     override fun onStart() {
         super.onStart()
 
-        db = appDatabase.getAppDataBase(view.context)
+        db = AppDatabase.getAppDataBase(view.context)
         userDao = db?.UserDao()
 
         btnReg.setOnClickListener{

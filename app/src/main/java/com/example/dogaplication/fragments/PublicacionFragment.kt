@@ -2,7 +2,6 @@ package com.example.dogaplication.fragments
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +11,7 @@ import android.widget.AutoCompleteTextView
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ToggleButton
+import androidx.navigation.findNavController
 import com.example.dogaplication.R
 import com.example.dogaplication.entities.Breed
 import com.example.dogaplication.entities.BreedsResponse
@@ -22,7 +22,7 @@ import retrofit2.Response
 //import com.bumptech.glide.Glide;
 //import com.bumptech.glide.request.RequestOptions;
 import com.example.dogaplication.database.PerritoDao
-import com.example.dogaplication.database.appDatabase
+import com.example.dogaplication.database.AppDatabase
 import com.example.dogaplication.entities.Perrito
 
 
@@ -40,7 +40,7 @@ class PublicacionFragment : Fragment() {
     private lateinit var imagen : EditText
     private lateinit var raza : AutoCompleteTextView
     private lateinit var btnPublicar : Button
-    private  var db: appDatabase? = null
+    private  var db: AppDatabase? = null
     private var perritoDao: PerritoDao? = null
     private lateinit var v : View
 
@@ -141,7 +141,7 @@ class PublicacionFragment : Fragment() {
         // mas componentes:
 
 
-        db = appDatabase.getAppDataBase(v.context)
+        db = AppDatabase.getAppDataBase(v.context)
         perritoDao = db?.PerritoDao()
         i = perritoDao?.countPerrito()
 
@@ -163,9 +163,8 @@ class PublicacionFragment : Fragment() {
                 duenio,
                 telefono),
                 )
-
-            db?.openHelper?.writableDatabase?.close()
-
+            val accion = PublicacionFragmentDirections.actionPublicacionFragmentToHomeFragment()
+            v.findNavController().navigate(accion)
         }
 
     }

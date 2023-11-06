@@ -6,8 +6,8 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.dogaplication.entities.Perrito
 import com.example.dogaplication.entities.User
-@Database(entities = [Perrito::class, User::class], version = 1, exportSchema = false)
-abstract class appDatabase : RoomDatabase() {
+@Database(entities = [Perrito::class, User::class], version = 1)
+abstract class AppDatabase : RoomDatabase() {
 
     abstract fun PerritoDao(): PerritoDao
 
@@ -15,13 +15,13 @@ abstract class appDatabase : RoomDatabase() {
 
     companion object {
 
-        var INSTANCE: appDatabase? = null
-        fun getAppDataBase(context: Context): appDatabase? {
+        var INSTANCE: AppDatabase? = null
+        fun getAppDataBase(context: Context): AppDatabase? {
             if (INSTANCE == null) {
-                synchronized(appDatabase::class) {
+                synchronized(AppDatabase::class) {
                     INSTANCE = Room.databaseBuilder(
                         context.applicationContext,
-                        appDatabase::class.java,
+                        AppDatabase::class.java,
                         "myDB2"
                     ).allowMainThreadQueries().build() // No es lo mas recomendable que se ejecute en el mainthread
                 }

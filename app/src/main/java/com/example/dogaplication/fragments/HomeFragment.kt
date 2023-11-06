@@ -1,7 +1,6 @@
 package com.example.dogaplication.fragments
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +10,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dogaplication.R
 import com.example.dogaplication.adapters.PerritoListAdapter
+import com.example.dogaplication.database.AppDatabase
+import com.example.dogaplication.database.PerritoDao
 import com.example.dogaplication.entities.Perrito
 import com.example.dogaplication.listener.OnViewItemClickedListener
 import com.google.android.material.snackbar.Snackbar
@@ -20,7 +21,9 @@ class HomeFragment : Fragment(), OnViewItemClickedListener {
     lateinit var reclistPerritos: RecyclerView
     lateinit var perritosListAdapter: PerritoListAdapter
     lateinit var linearLayoutManager: LinearLayoutManager
-     var listaPerritos : MutableList<Perrito> = ArrayList()
+    var listaPerritos : MutableList<Perrito?>? = ArrayList()
+    private  var db: AppDatabase? = null
+    private var perritoDao: PerritoDao? = null
 
     companion object {
         fun newInstance() = HomeFragment()
@@ -36,31 +39,23 @@ class HomeFragment : Fragment(), OnViewItemClickedListener {
 
         reclistPerritos = v.findViewById(R.id.recPerritoList)
 
-        for (i in 1..2) {
-            listaPerritos.add(Perrito(5000,"Pedro","","", 5, 10, 0, 0, "https://olondriz.com/wp-content/uploads/2020/04/ambar-perrito-1-1024x899.jpg","",""))
-            listaPerritos.add(Perrito(5001,"Olivia","","", 2, 10,0, 0, "","",""))
-            listaPerritos.add(Perrito(5002,"Martín","","", 9, 10,0, 0, "","",""))
-            listaPerritos.add(Perrito(5003,"Matt","","", 9, 10,0,0, "","",""))
-
-        }
-
         return v
 
     }
 
     override fun onStart() {
         super.onStart()
-
+        db = AppDatabase.getAppDataBase(v.context)
+        perritoDao = db?.PerritoDao()
+        listaPerritos = perritoDao?.loadAllPerritos()
 
         requireActivity()
+        reclistPerritos.setHasFixedSize(true)
+        linearLayoutManager = LinearLayoutManager(context)
 
-        reclistPerritos.setHasFixedSize(true) //fijo el ancho
-        linearLayoutManager = LinearLayoutManager(context) // creo un manejador de vista lineal
+        perritosListAdapter = PerritoListAdapter(listaPerritos, this)
 
-        perritosListAdapter = PerritoListAdapter(listaPerritos, this) //
-
-        reclistPerritos.layoutManager = linearLayoutManager // creo un adaptador
-
+        reclistPerritos.layoutManager = linearLayoutManager
         reclistPerritos.adapter = perritosListAdapter
 
     }
@@ -68,7 +63,6 @@ class HomeFragment : Fragment(), OnViewItemClickedListener {
     override fun onViewItemDetail(objectPerrito: Perrito) {
         val action = HomeFragmentDirections.actionHomeFragmentToPerritoDetails(objectPerrito)
 
-        Log.i("accion", action.toString())
         this.findNavController().navigate(action)
 
         Snackbar.make(v,objectPerrito.nombre,Snackbar.LENGTH_SHORT).show()

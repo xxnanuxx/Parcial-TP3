@@ -11,16 +11,22 @@ import com.example.dogaplication.listener.OnViewItemClickedListener
 
 class PerritoListAdapter(
 
-    private val perritosList: MutableList<Perrito>,
+    private val perritosList: MutableList<Perrito?>?,
     private val onItemClick: OnViewItemClickedListener
 
 
 
 ) : RecyclerView.Adapter<PerritoHolder>() {
 
-    override fun getItemCount() = perritosList.size
 
+    private var perritoCount : Int = 0
 
+    override fun getItemCount() : Int {
+        if (perritosList != null){
+            perritoCount = perritosList.size
+        }
+        return perritoCount
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PerritoHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_perrito, parent,false)
@@ -29,11 +35,13 @@ class PerritoListAdapter(
     }
 
     override fun onBindViewHolder(holder: PerritoHolder, position: Int) {
-        val perrito = perritosList[position]
-        holder.setName(TextUtils.concat(perrito.nombre," (", perrito.edad.toString(), ")").toString())
+        val perrito = perritosList?.get(position)
+        holder.setName(TextUtils.concat(perrito?.nombre," (", perrito?.edad.toString(), ")").toString())
         holder.setOrden(position)
         holder.getCardLayout().setOnClickListener{
-            onItemClick.onViewItemDetail(perrito)
+            if (perrito != null) {
+                onItemClick.onViewItemDetail(perrito)
+            }
         }
     }
 
