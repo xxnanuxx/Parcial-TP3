@@ -7,7 +7,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "users")
-class User(id: Int?, usuario:String?, nombre:String?, contrasena:String?, telefono:Long?, imageUrl:String?, ubicacion:String?):
+class User(id: Int?, usuario:String?, nombre:String?, contrasena:String?, telefono:String?, imageUrl:String?, ubicacion:String?):
     Parcelable {
 
     @PrimaryKey
@@ -19,7 +19,7 @@ class User(id: Int?, usuario:String?, nombre:String?, contrasena:String?, telefo
     @ColumnInfo(name = "contrasena")
     var contrasena: String = ""
     @ColumnInfo(name = "telefono")
-    var telefono: Long = 0
+    var telefono: String = ""
     @ColumnInfo(name = "ubicacion")
     var ubicacion: String = ""
     @ColumnInfo(name = "imageUrl")
@@ -30,7 +30,7 @@ class User(id: Int?, usuario:String?, nombre:String?, contrasena:String?, telefo
         parcel.readString(),
         parcel.readString(),
         parcel.readString(),
-        parcel.readLong(),
+        parcel.readString(),
         parcel.readString(),
         parcel.readString(),
         )
@@ -54,7 +54,7 @@ class User(id: Int?, usuario:String?, nombre:String?, contrasena:String?, telefo
         parcel.writeString(nombre)
         parcel.writeString(usuario)
         parcel.writeString(contrasena)
-        parcel.writeLong(telefono)
+        parcel.writeString(telefono)
         parcel.writeString(ubicacion)
         parcel.writeString(imageUrl)
     }

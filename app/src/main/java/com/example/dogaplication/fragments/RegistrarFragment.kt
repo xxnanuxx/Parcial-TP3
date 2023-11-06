@@ -66,7 +66,7 @@ class RegistrarFragment : Fragment() {
 
 
             if (user == null) {
-                userDao?.insertUser(User(i, editUser.text.toString(), editName.text.toString(),editPwd.text.toString(), (editTel.text.toString()).toLong(), editImgUrl.text.toString(), editUbi.text.toString()))
+                userDao?.insertUser(User(i, editUser.text.toString(), editName.text.toString(),editPwd.text.toString(), editTel.text.toString(), editImgUrl.text.toString(), editUbi.text.toString()))
                 editor.putString("usuario", editUser.text.toString())
                 i?.let { it1 -> editor.putInt("id", it1) }
                 editor.putString("nombre", editName.text.toString())

@@ -58,7 +58,7 @@ class LoginFragment : Fragment() {
                     editor.putInt("id", user.id)
                     editor.putString("usuario", user.usuario)
                     editor.putString("nombre", user.nombre)
-                    editor.putLong("telefono", user.telefono)
+                    editor.putString("telefono", user.telefono)
                     editor.putString("ubicacion", user.ubicacion)
                     editor.apply()
                     val intent = Intent(activity, MainActivity::class.java)
