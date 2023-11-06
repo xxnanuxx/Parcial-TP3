@@ -1,7 +1,9 @@
 package com.example.dogaplication.activities
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.fragment.NavHostFragment
@@ -25,6 +27,8 @@ class MainActivity : AppCompatActivity() {
         drawerLayout = findViewById(R.id.drawer_layout)
         navigationView = findViewById(R.id.nav_view)
         bottomNavView = findViewById(R.id.bottom_bar)
+        val sharedPreferences = getSharedPreferences("MiPreferencia", Context.MODE_PRIVATE)
+        val user = sharedPreferences.getString("nombre", "")
 
         val toolbar: androidx.appcompat.widget.Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
@@ -49,6 +53,9 @@ class MainActivity : AppCompatActivity() {
         NavigationUI.setupWithNavController(bottomNavView, navController)
         NavigationUI.setupWithNavController(navigationView, navController)
 
+        val headerUsernameTextView: TextView = navigationView.getHeaderView(0).findViewById(R.id.nav_header_username)
+
+        headerUsernameTextView.text = user
     }
 
 }
