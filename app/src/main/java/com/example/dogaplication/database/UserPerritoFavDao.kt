@@ -12,5 +12,6 @@ interface UserPerritoFavDao {
     fun insertUserFavPerritoCrossRef(userPerritoCrossRef: UserFavPerritoCrossRef)
 
     @Query("SELECT * FROM UserFavPerritoCrossRef WHERE userId = :userId")
-    fun getPerritosForUser(userId: Long): List<UserFavPerritoCrossRef>
+    fun getPerritosForUser(userId: Int?): List<UserFavPerritoCrossRef>
+
 }

@@ -36,7 +36,7 @@ class PublicacionFragment : Fragment() {
     private lateinit  var telefono : String
     private lateinit  var macho : ToggleButton
     private lateinit var descripcion : EditText
-    private lateinit  var ubicacion : EditText
+
     private lateinit var imagen : EditText
     private lateinit var raza : AutoCompleteTextView
     private lateinit var btnPublicar : Button
@@ -90,7 +90,7 @@ class PublicacionFragment : Fragment() {
         peso = v.findViewById(R.id.fragPubEditTxtPeso)
         macho = v.findViewById(R.id.fragPubtoggleButton)
         descripcion = v.findViewById(R.id.fragPubEditTxtDescrip)
-        ubicacion = v.findViewById(R.id.fragPubEditTxtUbicacion)
+
         imagen = v.findViewById(R.id.fragPubEditTxtUrlImages)
         duenio = usuario
         telefono = telDuenio
@@ -110,7 +110,6 @@ class PublicacionFragment : Fragment() {
                     val breedsResponse = response.body()
                     if (breedsResponse != null) {
                         val breedMap = breedsResponse.message
-
                             for ((breed, subBreeds) in breedMap) {
                                 val breedObject = Breed(breed, subBreeds)
                                 breedsList.add(breedObject)

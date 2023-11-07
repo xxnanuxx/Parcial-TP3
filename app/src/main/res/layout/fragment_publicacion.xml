@@ -110,12 +110,6 @@
                 android:layout_height="wrap_content"
                 android:hint="Descripcion" />
 
-            <EditText
-                android:id="@+id/fragPubEditTxtUbicacion"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Ubicacion" />
-
             <Button
                 android:id="@+id/fragPubBtnPublicar"
                 android:layout_width="match_parent"
