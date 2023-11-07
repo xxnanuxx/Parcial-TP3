@@ -7,7 +7,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity (tableName = "perritos")
-class Perrito(id: Int?, nombre:String?, raza: String?, subRaza: String?, edad: Int?, peso: Int? ,macho: Byte, favorito:Byte, imagen: String?, dueno: String?, telDueno: String?): Parcelable {
+class Perrito(id: Int?, nombre:String?, raza: String?, subRaza: String?, edad: Int?, peso: Int? ,macho: Byte, favorito:Byte, imagen: String?, dueno: String?, telDueno: String?, ubicacion: String?): Parcelable {
 
     @PrimaryKey
     var id: Int = 0
@@ -31,6 +31,8 @@ class Perrito(id: Int?, nombre:String?, raza: String?, subRaza: String?, edad: I
     var dueno: String = ""
     @ColumnInfo(name = "telDueno")
     var telDueno: String = ""
+    @ColumnInfo(name = "ubicacion")
+    var ubicacion: String = ""
 
 
     constructor(parcel: Parcel) : this(
@@ -42,6 +44,7 @@ class Perrito(id: Int?, nombre:String?, raza: String?, subRaza: String?, edad: I
         parcel.readInt(),
         parcel.readByte(),
         parcel.readByte(),
+        parcel.readString(),
         parcel.readString(),
         parcel.readString(),
         parcel.readString(),
@@ -59,6 +62,9 @@ class Perrito(id: Int?, nombre:String?, raza: String?, subRaza: String?, edad: I
         this.favorito = favorito!!
         this.dueno = dueno!!
         this.telDueno = telDueno!!
+        this.ubicacion = ubicacion!!
+
+
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
@@ -73,6 +79,8 @@ class Perrito(id: Int?, nombre:String?, raza: String?, subRaza: String?, edad: I
         parcel.writeString(imagen)
         parcel.writeString(dueno)
         parcel.writeString(telDueno)
+        parcel.writeString(ubicacion)
+
     }
 
     override fun describeContents(): Int {

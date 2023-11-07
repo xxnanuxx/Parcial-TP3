@@ -36,7 +36,7 @@ class PublicacionFragment : Fragment() {
     private lateinit  var telefono : String
     private lateinit  var macho : ToggleButton
     private lateinit var descripcion : EditText
-
+    private lateinit var ubicacion : String
     private lateinit var imagen : EditText
     private lateinit var raza : AutoCompleteTextView
     private lateinit var btnPublicar : Button
@@ -57,6 +57,7 @@ class PublicacionFragment : Fragment() {
 
         val usuario = sharedPreferences.getString("usuario", "").toString()
         val telDuenio = sharedPreferences.getString("telefono", "").toString()
+         ubicacion = sharedPreferences.getString("ubicacion", "").toString()
 
         // Configurar AutoCompleteTextView después de inflar la vista
         val autoCompleteTextView = v.findViewById<AutoCompleteTextView>(R.id.fragPubAutoCompleteTextView)
@@ -94,6 +95,7 @@ class PublicacionFragment : Fragment() {
         imagen = v.findViewById(R.id.fragPubEditTxtUrlImages)
         duenio = usuario
         telefono = telDuenio
+
 
         btnPublicar = v.findViewById(R.id.fragPubBtnPublicar)
 
@@ -160,7 +162,8 @@ class PublicacionFragment : Fragment() {
                 0.toByte(),
                 imagen.text.toString(),
                 duenio,
-                telefono),
+                telefono,
+                ubicacion),
                 )
             val accion = PublicacionFragmentDirections.actionPublicacionFragmentToHomeFragment()
             v.findNavController().navigate(accion)

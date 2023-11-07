@@ -1,5 +1,6 @@
 package com.example.dogaplication.fragments
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -13,7 +14,12 @@ import com.squareup.picasso.Picasso
 
 class PerritoDetails : Fragment() {
     lateinit var v: View
-    lateinit var info: TextView
+    lateinit var nombre: TextView
+    lateinit var edad: TextView
+    lateinit var peso: TextView
+    lateinit var macho: TextView
+    lateinit var dueno: TextView
+    lateinit var ubicacion: TextView
     lateinit var imgView : ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,7 +34,12 @@ class PerritoDetails : Fragment() {
 
     ): View? {
         v = inflater.inflate(R.layout.fragment_perrito_details, container, false)
-        info = v.findViewById(R.id.txtInfo)
+        nombre = v.findViewById(R.id.txtNombre)
+        edad = v.findViewById(R.id.txtEdad)
+        peso = v.findViewById(R.id.txtPeso)
+        macho = v.findViewById(R.id.txtMacho)
+        dueno = v.findViewById(R.id.txtDueno)
+        ubicacion = v.findViewById(R.id.txtUbicacion)
         imgView = v.findViewById(R.id.fragPDetailImgViewId)
 
         return v
@@ -36,13 +47,20 @@ class PerritoDetails : Fragment() {
 
     }
 
-    override fun onStart() {
-        super.onStart()
+        override fun onStart() {
+            super.onStart()
 
-        arguments?.let {
-          val perrito = PerritoDetailsArgs.fromBundle(it).objectPerrito
-          info.text = perrito?.nombre
-            Picasso.get().load(perrito?.imagen).into(imgView);
+            arguments?.let {
+              val perrito = PerritoDetailsArgs.fromBundle(it).objectPerrito
+
+                  nombre.text = perrito?.nombre
+                  edad.text =  perrito?.edad.toString()
+                  peso.text = perrito?.peso.toString()
+                  macho.text = if (perrito?.macho == 1.toByte()) "Macho" else "Hembra"
+                dueno.text = perrito?.dueno
+                ubicacion.text = perrito?.ubicacion
+
+                Picasso.get().load(perrito?.imagen).into(imgView);
         }
 
     }
