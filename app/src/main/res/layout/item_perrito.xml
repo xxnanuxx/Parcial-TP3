@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/card_package_item"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:backgroundTintMode="add"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="8dp">
+
+
+    <ImageView
+        android:id="@+id/fragItemPerritoImgViewFondoTarjeta"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/perro_adopcion" />
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
+        android:padding="15dp"
+        android:columnCount="2"
+        android:rowCount="4">
+
+        <ImageView
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:src="@drawable/huella"
+            android:layout_columnWeight="1" />
+
+        <ImageView
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:src="@drawable/huella"
+            android:layout_columnWeight="1" />
+
+        <TextView
+            android:id="@+id/fragItemPerritoTxtNombre"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Nombre del perro"
+            android:layout_columnWeight="1" />
+
+        <TextView
+            android:id="@+id/fragItemPerritoTxtRaza"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Raza del perro"
+            android:layout_columnWeight="1" />
+
+        <TextView
+            android:id="@+id/fragItemPerritoTxtSubraza"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Subraza del perro"
+            android:layout_columnWeight="1" />
+
+        <TextView
+            android:id="@+id/fragItemPerritoTxtEdad"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Edad del perro"
+            android:layout_columnWeight="1" />
+
+        <TextView
+            android:id="@+id/fragItemPerritoTxtSexo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Sexo del perro"
+            android:layout_columnWeight="1" />
+
+    </GridLayout>
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_principal"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.dogaplication.fragments.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_perritoDetails"
+            app:destination="@id/perritoDetails" />
+    </fragment>
+    <fragment
+        android:id="@+id/favoritoFragment"
+        android:name="com.example.dogaplication.fragments.FavoritoFragment"
+        android:label="fragment_favorito"
+        tools:layout="@layout/fragment_favorito" >
+        <action
+            android:id="@+id/action_favoritoFragment_to_perritoDetails"
+            app:destination="@id/perritoDetails" />
+    </fragment>
+    <fragment
+        android:id="@+id/adopcionFragment"
+        android:name="com.example.dogaplication.fragments.AdopcionFragment"
+        android:label="fragment_adopcion"
+        tools:layout="@layout/fragment_adopcion" />
+    <fragment
+        android:id="@+id/publicacionFragment"
+        android:name="com.example.dogaplication.fragments.PublicacionFragment"
+        android:label="fragment_publicacion"
+        tools:layout="@layout/fragment_publicacion" >
+        <action
+            android:id="@+id/action_publicacionFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/perfilFragment"
+        android:name="com.example.dogaplication.fragments.PerfilFragment"
+        android:label="fragment_perfil"
+        tools:layout="@layout/fragment_perfil" />
+    <activity
+        android:id="@+id/settingsActivity"
+        android:name="com.example.dogaplication.activities.SettingsActivity"
+        android:label="SettingsActivity" />
+    <fragment
+        android:id="@+id/perritoDetails"
+        android:name="com.example.dogaplication.fragments.PerritoDetails"
+        android:label="fragment_perrito_details"
+        tools:layout="@layout/fragment_perrito_details" >
+        <argument
+            android:name="objectPerrito"
+            app:argType="com.example.dogaplication.entities.Perrito" />
+    </fragment>
+</navigation>
