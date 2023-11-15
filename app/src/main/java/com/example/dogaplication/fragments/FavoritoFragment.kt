@@ -27,6 +27,7 @@ class FavoritoFragment : Fragment(), OnViewItemClickedListener {
     lateinit var perritosListAdapter: PerritoListAdapter
     lateinit var linearLayoutManager: LinearLayoutManager
     var listaPerritos : MutableList<Perrito?>? = ArrayList()
+    var listaRef :  MutableList<UserFavPerritoCrossRef>? = ArrayList()
     private  var db: AppDatabase? = null
     private var userDao: UserDao? = null
     private var userPerritoFavDao : UserPerritoFavDao? = null
@@ -38,32 +39,36 @@ class FavoritoFragment : Fragment(), OnViewItemClickedListener {
     ): View? {
         // Inflate the layout for this fragment
         v = inflater.inflate(R.layout.fragment_favorito, container, false)
+        reclistPerritos = v.findViewById(R.id.fragFavRecView)
+        db = AppDatabase.getAppDataBase(v.context)
+        userDao = db?.UserDao()
+        perritoDao = db?.PerritoDao()
+        userPerritoFavDao = db?.UserPerritoFavDao()
+        val sharedPreferences = requireContext().getSharedPreferences("MiPreferencia", Context.MODE_PRIVATE)
+        val usuarioId = sharedPreferences.getInt("id", 0)
+        listaRef  = userPerritoFavDao?.getPerritosForUser(usuarioId)
+        if(listaRef != null && usuarioId != null) {
+            listaPerritos?.clear()
+            for (objeto in listaRef!!){
+                val perritoId = objeto.perritoId
+                listaPerritos?.add(perritoDao?.loadPerritoById(perritoId.toInt()))
+            }
+        }
         return v
     }
 
     override fun onStart() {
         super.onStart()
-        db = AppDatabase.getAppDataBase(v.context)
-        userDao = db?.UserDao()
-        perritoDao = db?.PerritoDao()
-        val sharedPreferences = requireContext().getSharedPreferences("MiPreferencia", Context.MODE_PRIVATE)
-        val usuarioId = sharedPreferences.getInt("id", 0)
-        val listaRef :  List<UserFavPerritoCrossRef>? = userPerritoFavDao?.getPerritosForUser(usuarioId)
-        if(listaRef != null && usuarioId != null) {
-            for (perritoId in listaRef){
-                listaPerritos?.add(perritoDao?.loadPerritoById(usuarioId.toInt()))
-            }
-
 
         requireActivity()
-
         reclistPerritos.setHasFixedSize(true)
         linearLayoutManager = LinearLayoutManager(context)
         perritosListAdapter = PerritoListAdapter(listaPerritos, this)
         reclistPerritos.layoutManager = linearLayoutManager
         reclistPerritos.adapter = perritosListAdapter
-        }
+
     }
+
     override fun onViewItemDetail(objectPerrito: Perrito) {
         val action = FavoritoFragmentDirections.actionFavoritoFragmentToPerritoDetails(objectPerrito)
         this.findNavController().navigate(action)

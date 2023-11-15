@@ -47,6 +47,7 @@ class HomeFragment : Fragment(), OnViewItemClickedListener {
         db = AppDatabase.getAppDataBase(v.context)
         perritoDao = db?.PerritoDao()
         listaPerritos = perritoDao?.loadAllPerritos()
+
         requireActivity()
         reclistPerritos.setHasFixedSize(true)
         linearLayoutManager = LinearLayoutManager(context)
@@ -60,12 +61,8 @@ class HomeFragment : Fragment(), OnViewItemClickedListener {
 
     override fun onViewItemDetail(objectPerrito: Perrito) {
         val action = HomeFragmentDirections.actionHomeFragmentToPerritoDetails(objectPerrito)
-
         this.findNavController().navigate(action)
-
         Snackbar.make(v,objectPerrito.nombre,Snackbar.LENGTH_SHORT).show()
-
-
     }
 
 

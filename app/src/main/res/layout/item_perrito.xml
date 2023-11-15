@@ -15,9 +15,19 @@
     <ImageView
         android:id="@+id/fragItemPerritoImgViewFondoTarjeta"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="257dp"
         android:scaleType="centerCrop"
         android:src="@drawable/perro_adopcion" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="104dp"
+        android:layout_gravity="bottom"
+        android:alpha="0.22"
+        android:background="@color/black"
+        app:cardCornerRadius="20dp">
+
+    </FrameLayout>
 
     <GridLayout
         android:layout_width="match_parent"
@@ -31,48 +41,58 @@
             android:layout_width="15dp"
             android:layout_height="15dp"
             android:src="@drawable/huella"
-            android:layout_columnWeight="1" />
+            android:layout_columnWeight="1"
+            android:layout_gravity="start"/>
 
         <ImageView
             android:layout_width="15dp"
             android:layout_height="15dp"
             android:src="@drawable/huella"
-            android:layout_columnWeight="1" />
+            android:layout_columnWeight="1"
+            android:layout_gravity="start"/>
 
         <TextView
             android:id="@+id/fragItemPerritoTxtNombre"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
             android:text="Nombre del perro"
-            android:layout_columnWeight="1" />
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/fragItemPerritoTxtRaza"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
             android:text="Raza del perro"
-            android:layout_columnWeight="1" />
+            android:textColor="@color/white"
+            android:textSize="20dp" />
 
         <TextView
             android:id="@+id/fragItemPerritoTxtSubraza"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
             android:text="Subraza del perro"
-            android:layout_columnWeight="1" />
+            android:textColor="@color/white" />
 
         <TextView
             android:id="@+id/fragItemPerritoTxtEdad"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
             android:text="Edad del perro"
-            android:layout_columnWeight="1" />
+            android:textColor="@color/white" />
 
         <TextView
             android:id="@+id/fragItemPerritoTxtSexo"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
             android:text="Sexo del perro"
-            android:layout_columnWeight="1" />
+            android:textColor="@color/white" />
 
     </GridLayout>
 </androidx.cardview.widget.CardView>
