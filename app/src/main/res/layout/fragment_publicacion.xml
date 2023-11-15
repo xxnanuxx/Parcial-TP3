@@ -66,14 +66,28 @@
                 android:hint="Edad"
                 android:inputType="number" />
 
-            <AutoCompleteTextView
-                android:id="@+id/fragPubAutoCompleteTextView"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="0dp"
-                android:hint="De que raza es tu perro..."
+                android:layout_marginBottom="7dp"
+                app:boxBackgroundMode="none"
+                app:hintTextColor="#7E7B7B"
                 app:layout_constraintStart_toStartOf="@+id/guideline"
-                tools:layout_editor_absoluteY="369dp" />
+                app:placeholderTextColor="#828282"
+                tools:layout_editor_absoluteY="369dp">
+
+                <AutoCompleteTextView
+                    android:id="@+id/fragPubAutoCompleteTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="0dp"
+                    android:hint="De qué raza es tu perro..."
+                    android:textColor="@android:color/darker_gray"
+                    android:textColorHint="#7D7A7A"
+                    android:textSize="17sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
                 android:layout_width="match_parent"
